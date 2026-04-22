@@ -15,10 +15,16 @@ DIR_PATH="/home/zdserocki/RBE575"
 REPO_PATH="${DIR_PATH}/Efficient-Eng-2-LTL-RBE575"
 
 # Create an environment for the job
-python -m venv ${DIR_PATH}/LTL-venv
-source ${DIR_PATH}/LTL-venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r ${REPO_PATH}/requirements.txt
+module load python/3.10.17/v6xrl7k
+module load miniconda3/25.1.1/24g7bpu
+
+# Create conda env only if it doesn't exist
+if [ ! -d "${DIR_PATH}/LTL-venv" ]; then
+    conda create -p ${DIR_PATH}/LTL-venv python=3.10 -y
+fi
+
+source activate ${DIR_PATH}/LTL-venv
+pip install -r ${REPO_PATH}/requirements.txt
 
 # Run the main wrapper file with relevant arguments
 export PRETRAINED_MODEL_DIR=huggingface_models/bart-large
