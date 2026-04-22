@@ -32,6 +32,7 @@ if [ ! -d "${DIR_PATH}/LTL-venv" ]; then
     pip install sentencepiece
     pip install jsons appdirs blobfile cached-property httpx typer whoosh more_itertools
     pip install --upgrade protobuf==3.20.0
+    pip install "accelerate>=0.20.1"
     
     nvcc --version || echo "nvcc not found"
     python -c "import torch; print('CUDA available:', torch.cuda.is_available()); print('CUDA version:', torch.version.cuda)"
