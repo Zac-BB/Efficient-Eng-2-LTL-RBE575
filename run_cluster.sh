@@ -19,12 +19,9 @@ REPO_PATH="${DIR_PATH}/Efficient-Eng-2-LTL-RBE575"
 # Init conda for use in script
 source $(conda info --base)/etc/profile.d/conda.sh
 
-# Create conda env only if it doesn't exist
 if [ ! -d "${DIR_PATH}/LTL-venv" ]; then
     conda create -p ${DIR_PATH}/LTL-venv python=3.10 -y
     conda activate ${DIR_PATH}/LTL-venv
-
-    # Install dependencies
     pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
     pip install transformers==4.30.0
     pip install tokenizers==0.13.3
@@ -33,12 +30,13 @@ if [ ! -d "${DIR_PATH}/LTL-venv" ]; then
     pip install jsons appdirs blobfile cached-property httpx typer whoosh more_itertools
     pip install --upgrade protobuf==3.20.0
     pip install "accelerate>=0.20.1"
-    
-    nvcc --version || echo "nvcc not found"
-    python -c "import torch; print('CUDA available:', torch.cuda.is_available()); print('CUDA version:', torch.version.cuda)"
 else
     conda activate ${DIR_PATH}/LTL-venv
 fi
+
+# Debug info
+nvcc --version || echo "nvcc not found"
+python -c "import torch; print('CUDA available:', torch.cuda.is_available()); print('CUDA version:', torch.version.cuda)"
 
 # Download BART model if not already downloaded
 if [ ! -d "${REPO_PATH}/run/huggingface_models/bart-large" ]; then
@@ -52,6 +50,15 @@ export TRAINED_MODEL_DIR=trained_models/
 DOMAIN=drone-syn-aug
 
 cd ${REPO_PATH}/run
+
 python -m semantic_parsing_with_constrained_lm.finetune.lm_finetune \
     --config-name semantic_parsing_with_constrained_lm.finetune.configs.emnlp_train_config \
     --exp-names ltl_${DOMAIN}_utterance
+
+# Run inference
+python -m semantic_parsing_with_constrained_lm.run_exp \
+    --config-name semantic_parsing_with_constrained_lm.configs.ltl_config \
+    --log-dir logs/ \
+    --model Bart \
+    --eval-split test-full \
+    --exp-names "ltl_Bart_test-full_${DOMAIN}_constrained_utterance_train-0"
