@@ -1,5 +1,6 @@
 #!/bin/bash
-#SBATCH -J "NL To LTL"     # Job name
+#SBATCH -J "NL To LTL"              # Job name
+#SBATCH -A rbe577
 #SBATCH -o job_output.out           # Output log
 #SBATCH -e job_err.err              # Error log
 #SBATCH -p academic                 # Partition
@@ -7,7 +8,7 @@
 #SBATCH -G 2                        # 2 GPUs
 
 # If necessary, include the specific versions required
-module load python/3.10.20
+module load python/3.10.17
 
 # Define the paths to your project directories here
 DIR_PATH="/home/zdserocki/RBE575"
