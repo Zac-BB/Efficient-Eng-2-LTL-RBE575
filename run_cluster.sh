@@ -10,7 +10,7 @@
 module load python/3.10.20
 
 # Define the paths to your project directories here
-DIR_PATH="/home/zdserocki/RBE575/"
+DIR_PATH="/home/zdserocki/RBE575"
 REPO_PATH="${DIR_PATH}/Efficient-Eng-2-LTL-RBE575"
 
 # Create an environment for the job
@@ -20,4 +20,12 @@ python -m pip install --upgrade pip
 python -m pip install -r ${REPO_PATH}/requirements.txt
 
 # Run the main wrapper file with relevant arguments
-python ${REPO_PATH}/P1-MyAutoPano/Phase2/Code/Wrapper.py
+export PRETRAINED_MODEL_DIR=huggingface_models/bart-large
+export TRAINED_MODEL_DIR=trained_models/
+
+DOMAIN=drone-syn-aug # for example, DOMAIN=pick-syn-aug
+python ${REPO_PATH}/run/semantic_parsing_with_constrained_lm/finetune/lm_finetune.py \
+    --config-name semantic_parsing_with_constrained_lm.finetune.configs.emnlp_train_config \
+    --exp-names ltl_${DOMAIN}_utterance
+
+
