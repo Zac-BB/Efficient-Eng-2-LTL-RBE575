@@ -25,8 +25,10 @@ if [ ! -d "${DIR_PATH}/LTL-venv" ]; then
     conda activate ${DIR_PATH}/LTL-venv
 
     # Install dependencies
-    pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
-    pip install transformers datasets
+    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+    pip install transformers==4.30.0
+    pip install tokenizers==0.13.3
+    pip install datasets
     pip install sentencepiece
     pip install jsons appdirs blobfile cached-property httpx typer whoosh more_itertools
     pip install --upgrade protobuf==3.20.0
