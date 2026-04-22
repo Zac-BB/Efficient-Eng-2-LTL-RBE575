@@ -1,0 +1,7 @@
+Running train experiment ltl_drone-syn-aug_utterance with train size 5900
+Batch size per device: 32
+Gradient accumulation steps: 1
+
+Number of examples removed on output truncation at length 500: 0
+Before Training GPU State
+Max memory GPU 0: 1625367040 / 8325824512 = 0.19521994940649548

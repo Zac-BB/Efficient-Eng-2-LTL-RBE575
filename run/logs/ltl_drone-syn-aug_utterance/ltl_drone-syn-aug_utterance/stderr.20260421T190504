@@ -1,0 +1,44 @@
+/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/transformers/optimization.py:411: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+  0%|          | 0/10000 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/home/zac/WPI/RBE575/Efficient-Eng-2-LTL-RBE575/run/semantic_parsing_with_constrained_lm/util/logger.py", line 99, in intercept_output
+    yield
+  File "/home/zac/WPI/RBE575/Efficient-Eng-2-LTL-RBE575/run/semantic_parsing_with_constrained_lm/finetune/lm_finetune.py", line 260, in main
+    run(exp_name, exp, log_dir)
+  File "/home/zac/WPI/RBE575/Efficient-Eng-2-LTL-RBE575/run/semantic_parsing_with_constrained_lm/finetune/lm_finetune.py", line 213, in run
+    trainer.train()
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/transformers/trainer.py", line 1645, in train
+    return inner_training_loop(
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/transformers/trainer.py", line 1929, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/transformers/trainer.py", line 2750, in training_step
+    loss = self.compute_loss(model, inputs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/transformers/trainer.py", line 2775, in compute_loss
+    outputs = model(**inputs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/transformers/models/bart/modeling_bart.py", line 1379, in forward
+    outputs = self.model(
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/transformers/models/bart/modeling_bart.py", line 1243, in forward
+    encoder_outputs = self.encoder(
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/transformers/models/bart/modeling_bart.py", line 859, in forward
+    layer_outputs = encoder_layer(
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/transformers/models/bart/modeling_bart.py", line 345, in forward
+    hidden_states = nn.functional.dropout(hidden_states, p=self.activation_dropout, training=self.training)
+  File "/home/zac/anaconda3/envs/ENG-2-LTL/lib/python3.10/site-packages/torch/nn/functional.py", line 1425, in dropout
+    _VF.dropout_(input, p, training) if inplace else _VF.dropout(input, p, training)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 116.00 MiB. GPU 0 has a total capacity of 7.75 GiB of which 37.75 MiB is free. Including non-PyTorch memory, this process has 7.71 GiB memory in use. Of the allocated memory 7.46 GiB is allocated by PyTorch, and 92.90 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
