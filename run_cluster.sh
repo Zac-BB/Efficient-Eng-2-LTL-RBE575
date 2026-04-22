@@ -20,10 +20,10 @@ module load miniconda3/25.1.1/24g7bpu
 
 # Create conda env only if it doesn't exist
 if [ ! -d "${DIR_PATH}/LTL-venv" ]; then
-    conda create -p ${DIR_PATH}/LTL-venv python=3.10 -y
+    conda create -p ${DIR_PATH}/LTL-venv --file ${REPO_PATH}/requirements.txt -y
 fi
 
-source activate ${DIR_PATH}/LTL-venv
+conda activate ${DIR_PATH}/LTL-venv
 pip install -r ${REPO_PATH}/requirements.txt
 
 # Run the main wrapper file with relevant arguments
