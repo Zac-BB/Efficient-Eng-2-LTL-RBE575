@@ -1,0 +1,13 @@
+torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+transformers
+datasets
+sentencepiece
+jsons
+appdirs
+blobfile
+cached-property
+httpx
+typer
+whoosh
+more_itertools
+protobuf==3.20.0

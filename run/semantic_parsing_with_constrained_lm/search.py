@@ -216,7 +216,7 @@ class ConstrainedDecodingProblem(Problem[HS, PSNSub]):
             token_and_logprob_iter = (
                 (token_id_tensor.item(), logprob)  # type: ignore
                 for token_id_tensor, logprob in zip(
-                    indices[topk_eligible_logprobs.indices],
+                    indices[topk_eligible_logprobs.indices.cpu()],
                     topk_eligible_logprobs.values,
                 )
             )
