@@ -128,6 +128,7 @@ class BenchClampDataset(str, Enum):
 
 LTL_DOMAINS = [
     "drone-syn-aug",
+    "drone-syn-aug-clustered",
     "drone-golden-cross0-split0",
     "drone-golden-cross0-split1",
     "drone-golden-cross0-split2",
