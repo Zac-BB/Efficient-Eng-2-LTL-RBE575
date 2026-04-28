@@ -1,0 +1,51 @@
+Dataset: datasets/drone-planning/syn-aug-clustered.train.jsonl
+Total examples: 5940
+
+Cluster counts:
+ordered_goal: 2937 (49.44%)
+global_constraint: 1452 (24.44%)
+until_ordering: 1452 (24.44%)
+single_goal: 55 (0.93%)
+choice_goal: 44 (0.74%)
+
+Example rows:
+
+single_goal:
+  natural: go to the blue room
+  formula: finally ( the blue room )
+  natural: Head to the blue room.  
+  formula: finally ( the blue room )
+  natural: Make your way to the blue room.  
+  formula: finally ( the blue room )
+
+ordered_goal:
+  natural: go to the blue room, and then the green room at last
+  formula: finally ( and ( the blue room , finally ( the green room ) ) )
+  natural: Head to the blue room first, and finish in the green room.
+  formula: finally ( and ( the blue room , finally ( the green room ) ) )
+  natural: Visit the blue room, then end up in the green room.
+  formula: finally ( and ( the blue room , finally ( the green room ) ) )
+
+global_constraint:
+  natural: go to the blue room at last, and always stay in the green room
+  formula: and ( finally ( the blue room ) , always ( the green room ) )
+  natural: Head to the blue room in the end, and remain in the green room at all times.  
+  formula: and ( finally ( the blue room ) , always ( the green room ) )
+  natural: Eventually make your way to the blue room, but always keep yourself in the green room.  
+  formula: and ( finally ( the blue room ) , always ( the green room ) )
+
+until_ordering:
+  natural: avoid go to the blue room until go to the green room
+  formula: until ( not ( the blue room ) , the green room )
+  natural: Don’t enter the blue room before you go to the green room.
+  formula: until ( not ( the blue room ) , the green room )
+  natural: Stay out of the blue room until after you’ve gone to the green room.
+  formula: until ( not ( the blue room ) , the green room )
+
+choice_goal:
+  natural: go to the orange room
+  formula: finally ( the orange room )
+  natural: Head to the orange room.  
+  formula: finally ( the orange room )
+  natural: Proceed to the orange-colored room.  
+  formula: finally ( the orange room )
